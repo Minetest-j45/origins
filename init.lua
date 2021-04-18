@@ -1,5 +1,11 @@
 local storage = minetest.get_mod_storage()
 
+local modules = {"enderian", "merling", "phantom", "elytrian", "blazeborn", "avian", "arachnid", "shulk", "feline"}
+
+for _, module in pairs(modules) do
+    dofile(modpath .. "/" .. module .. ".lua")
+end
+
 origins = {}
 
 if storage:contains("origins") then
