@@ -25,12 +25,12 @@ origins.fs = "size[3,4]" ..
 	"image_button[0,0;1,1;mcl_end_ender_eye.png;enderian;Enderian]" ..
 	"image_button[1,0;1,1;mcl_fishing_fish_cooked.png;merling;Merling]" ..
 	"image_button[2,0;1,1;TEXTURE;phantom;Phantom]" ..
-	"image_button[0,0;1,1;mcl_armor_inv_elytra.png;elytrian;Elytrian]" ..
-	"image_button[1,0;1,1;TEXTURE;blazeborn;Blazeborn]" ..
-	"image_button[2,0;1,1;TEXTURE;avian;Avian]" ..
-	"image_button[0,0;1,1;TEXTURE;arachnid;Arachnid]" ..
-	"image_button[1,0;1,1;TEXTURE;shulk;Shulk]" ..
-	"image_button[2,0;1,1;TEXTURE;feline;Feline]"
+	"image_button[0,1;1,1;mcl_armor_inv_elytra.png;elytrian;Elytrian]" ..
+	"image_button[1,1;1,1;TEXTURE;blazeborn;Blazeborn]" ..
+	"image_button[2,1;1,1;TEXTURE;avian;Avian]" ..
+	"image_button[0,2;1,1;TEXTURE;arachnid;Arachnid]" ..
+	"image_button[1,2;1,1;TEXTURE;shulk;Shulk]" ..
+	"image_button[2,2;1,1;TEXTURE;feline;Feline]"
 
 local function get_player_team(name)
 	for k, team in pairs(origins.origin) do
