@@ -54,7 +54,7 @@ minetest.register_craftitem("origins:orb", {
  
 	on_use = function(itemstack, user, pointed_thing)
 		minetest.show_formspec(user:get_player_name, "origins:orb_fs", origins.fs)
-	end,
+	end
 })
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
