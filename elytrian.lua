@@ -27,6 +27,10 @@ local player_collision = function(player)
 	return({x,z})
 end
 
+local function degrees(rad)
+	return rad * 180.0 / math.pi
+end
+
 --elytra effect
 minetest.register_globalstep(function(dtime)
 	for _, pname in pairs(origins.origin.elytrian) do
