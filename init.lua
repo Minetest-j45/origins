@@ -12,7 +12,7 @@ if storage:contains("origins") then
 	origins = minetest.deserialize(storage:get_string("origins"))
 end
 
-local mp = minetest.get_modpath(minetest.get_current_modname())
+local mp = minetest.get_modpath("origins")
 
 origins.origin = {
 	enderian = {},
