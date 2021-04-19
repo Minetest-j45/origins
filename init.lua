@@ -1,18 +1,17 @@
-local storage = minetest.get_mod_storage()
+origins = {}
 
+local storage = minetest.get_mod_storage()
+local mp = minetest.get_modpath("origins")
 local modules = {"enderian", "merling", "phantom", "elytrian", "blazeborn", "avian", "arachnid", "shulk", "feline"}
 
 for _, module in pairs(modules) do
     dofile(modpath .. "/" .. module .. ".lua")
 end
 
-origins = {}
-
 if storage:contains("origins") then
 	origins = minetest.deserialize(storage:get_string("origins"))
 end
 
-local mp = minetest.get_modpath("origins")
 
 origins.origin = {
 	enderian = {},
