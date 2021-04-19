@@ -1,17 +1,5 @@
 origins = {}
 
-local storage = minetest.get_mod_storage()
-local mp = minetest.get_modpath("origins")
-local modules = {"enderian", "merling", "phantom", "elytrian", "blazeborn", "avian", "arachnid", "shulk", "feline"}
-
-for _, module in pairs(modules) do
-    dofile(mp .. "/" .. module .. ".lua")
-end
-
-if storage:contains("origins") then
-	origins = minetest.deserialize(storage:get_string("origins"))
-end
-
 
 origins.origin = {
 	enderian = {},
@@ -22,7 +10,8 @@ origins.origin = {
 	avain = {},
 	arachnid = {},
 	shulk = {},
-	feline = {}
+	feline = {},
+	player = {}
 }
 
 
@@ -35,7 +24,20 @@ origins.fs = "size[3,4]" ..
 	"image_button[2,1;1,1;TEXTURE;avian;Avian]" ..
 	"image_button[0,2;1,1;TEXTURE;arachnid;Arachnid]" ..
 	"image_button[1,2;1,1;TEXTURE;shulk;Shulk]" ..
-	"image_button[2,2;1,1;TEXTURE;feline;Feline]"
+	"image_button[2,2;1,1;TEXTURE;feline;Feline]" ..
+	"image_button[2,2;1,1;TEXTURE;player;Player]"
+
+local storage = minetest.get_mod_storage()
+if storage:contains("origins") then
+	origins = minetest.deserialize(storage:get_string("origins"))
+end
+
+local mp = minetest.get_modpath("origins")
+local modules = {"enderian", "merling", "phantom", "elytrian", "blazeborn", "avian", "arachnid", "shulk", "feline", "player"}
+
+for _, module in pairs(modules) do
+    dofile(mp .. "/" .. module .. ".lua")
+end
 
 local function get_player_team(name)
 	for k, team in pairs(origins.origin) do
@@ -66,84 +68,43 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "origins:orb_fs" then
 		local pname = player:get_player_name()
 		local current = get_player_team(pname)
+		local tablenumber = tablefind(origins.origin[current], pname)
 		if fields.enderian then --enderian
-			if not current then
-				table.insert(origins.origin.enderian, pname)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.enderian, pname)
-			end
+			table.insert(origins.origin.enderian, pname)
 		elseif fields.merling then --merling
-			if not current then
-				table.insert(origins.origin.merling)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.merling, pname)
-			end
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.merling, pname)
 		elseif fields.phantom then --phantom
-			if not current then
-				table.insert(origins.origin.phantom, pname)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.phantom, pname)
-			end
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.phantom, pname)
 		elseif fields.elytrian then --elytrian
-			if not current then
-				table.insert(origins.origin.elytrian, pname)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.elytrian, pname)
-			end
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.elytrian, pname)
 		elseif fields.blazeborn then --blazeborn
-			if not current then
-				table.insert(origins.origin.blazeborn, pname)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.blazeborn, pname)
-			end
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.blazeborn, pname)
 		elseif fields.avian then --avian
-			if not current then
-				table.insert(origins.origin.avian, pname)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.avian, pname)
-			end
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.avian, pname)
 		elseif fields.arachnid then --arachnid
-			if not current then
-				table.insert(origins.origin.arachnid, pname)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.arachnid, pname)
-			end
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.arachnid, pname)
 		elseif fields.shulk then --shulk
-			if not current then
-				table.insert(origins.origin.shulk, pname)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.shulk, pname)
-			end
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.shulk, pname)
 		elseif fields.feline then --feline
-			if not current then
-				table.insert(origins.origin.feline, pname)
-			else
-				local tablenumber = tablefind(origins.origin[current], pname)
-				table.remove(origins.origin[current], tonumber(tablenumber))
-				table.insert(origins.origin.feline, pname)
-			end
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.feline, pname)
+		elseif fields.player then
+			table.remove(origins.origin[current], tonumber(tablenumber))
+			table.insert(origins.origin.player, pname)	
 		end
 	end
 end)
 
 minetest.register_on_newplayer(function(player)
 	player:get_inventory():add_item("main", ItemStack("origins:orb"))
+	table.insert(origins.origin.player, player:get_player_name())
 end)
 
 minetest.register_on_shutdown(function()
