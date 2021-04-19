@@ -1,6 +1,7 @@
 --elytra effect
 minetest.register_globalstep(function(dtime)
-	for _, player in pairs(origins.origin.elytrian) do
+	for _, pname in pairs(origins.origin.elytrian) do
+		local player = minetest.get_player_by_name(pname)
 		local control = player:get_player_control()
 		local player_velocity = player:get_velocity() or player:get_player_velocity()
 		local fly_pos = player:get_pos()
