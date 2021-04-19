@@ -1,5 +1,6 @@
 origins.elytra = {}
 
+local dir_to_yaw = minetest.dir_to_yaw
 local player_collision = function(player)
 
 	local pos = player:get_pos()
