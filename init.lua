@@ -147,5 +147,5 @@ minetest.register_on_newplayer(function(player)
 end)
 
 minetest.register_on_shutdown(function()
-	storage:set_string("origins", minetest.serialize(muted_players))
+	storage:set_string("origins", minetest.serialize(origins))
 end)
