@@ -33,7 +33,7 @@ if storage:contains("origins") then
 end
 
 local mp = minetest.get_modpath("origins")
-local modules = {"enderian", "merling", "phantom", "elytrian", "blazeborn", "avian", "arachnid", "shulk", "feline", "player"}
+local modules = {"enderian", "merling", "phantom", "elytrian", "blazeborn", "avian", "arachnid", "shulk", "feline"}
 
 for _, module in pairs(modules) do
     dofile(mp .. "/" .. module .. ".lua")
