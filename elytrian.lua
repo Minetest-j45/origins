@@ -10,4 +10,5 @@ minetest.register_globalstep(function(dtime)
    	elytra.active = (elytra.active or control.jump and player_velocity.y < -6)
 		and not player:get_attach()
 		and (fly_node == "air" or fly_node == "ignore")
+   end
 end)
