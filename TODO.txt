@@ -6,4 +6,4 @@ blazeborn
 avian
 arachnid
 shulk
-feline(no fall dmg done)
+feline(no fall dmg is done)
