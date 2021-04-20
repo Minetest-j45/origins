@@ -72,43 +72,43 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		if fields.enderian then --enderian
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.enderian, pname)
-			minetest.chat_send_all(pname .. "is now an Enderian")
+			minetest.chat_send_all(pname .. " is now an Enderian")
 		elseif fields.merling then --merling
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.merling, pname)
-			minetest.chat_send_all(pname .. "is now a Merling")
+			minetest.chat_send_all(pname .. " is now a Merling")
 		elseif fields.phantom then --phantom
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.phantom, pname)
-			minetest.chat_send_all(pname .. "is now a Phantom")
+			minetest.chat_send_all(pname .. " is now a Phantom")
 		elseif fields.elytrian then --elytrian
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.elytrian, pname)
-			minetest.chat_send_all(pname .. "is now an Elytrian")
+			minetest.chat_send_all(pname .. " is now an Elytrian")
 		elseif fields.blazeborn then --blazeborn
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.blazeborn, pname)
-			minetest.chat_send_all(pname .. "is now a Blazeborn")
+			minetest.chat_send_all(pname .. " is now a Blazeborn")
 		elseif fields.avian then --avian
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.avian, pname)
-			minetest.chat_send_all(pname .. "is now an Avian")
+			minetest.chat_send_all(pname .. " is now an Avian")
 		elseif fields.arachnid then --arachnid
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.arachnid, pname)
-			minetest.chat_send_all(pname .. "is now an Arachnid")
+			minetest.chat_send_all(pname .. " is now an Arachnid")
 		elseif fields.shulk then --shulk
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.shulk, pname)
-			minetest.chat_send_all(pname .. "is now a Shulk")
+			minetest.chat_send_all(pname .. " is now a Shulk")
 		elseif fields.feline then --feline
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.feline, pname)
-			minetest.chat_send_all(pname .. "is now a Feline")
+			minetest.chat_send_all(pname .. " is now a Feline")
 		elseif fields.player then
 			table.remove(origins.origin[current], tonumber(tablenumber))
 			table.insert(origins.origin.player, pname)
-			minetest.chat_send_all(pname .. "is now a player")
+			minetest.chat_send_all(pname .. " is now a player")
 		end
 	end
 end)
