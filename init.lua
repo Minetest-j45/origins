@@ -16,7 +16,7 @@ origins.origin = {
 
 
 origins.fs = "size[3,4]" ..
-	"image_button[0,0;1,1;mcl_end_ender_eye.png;enderian;Enderian]" ..
+	"image_button[0,0;1,1;mcl_throwing_ender_pearl.png;enderian;Enderian]" ..
 	"image_button[1,0;1,1;mcl_fishing_fish_cooked.png;merling;Merling]" ..
 	"image_button[2,0;1,1;TEXTURE;phantom;Phantom]" ..
 	"image_button[0,1;1,1;mcl_armor_inv_elytra.png;elytrian;Elytrian]" ..
