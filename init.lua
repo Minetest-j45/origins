@@ -39,7 +39,7 @@ for _, module in pairs(modules) do
     dofile(mp .. "/" .. module .. ".lua")
 end
 
-local function get_player_team(name)
+origins.get_player_team = function(name)
 	for k, team in pairs(origins.origin) do
 		for _, pname in ipairs(team) do
 			if name == pname then return k end
