@@ -1,0 +1,9 @@
+enderian
+merling
+phantom
+elytrian
+blazeborn
+avian
+arachnid
+shulk
+feline(no fall dmg done)
