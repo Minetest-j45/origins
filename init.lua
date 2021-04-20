@@ -67,7 +67,7 @@ minetest.register_craftitem("origins:orb", {
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname == "origins:orb_fs" then
 		local pname = player:get_player_name()
-		local current = get_player_team(pname)
+		local current = origins.get_player_team(pname)
 		local tablenumber = tablefind(origins.origin[current], pname)
 		if fields.enderian then --enderian
 			table.insert(origins.origin.enderian, pname)
