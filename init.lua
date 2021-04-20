@@ -25,7 +25,7 @@ origins.fs = "size[3,4]" ..
 	"image_button[0,2;1,1;TEXTURE;arachnid;Arachnid]" ..
 	"image_button[1,2;1,1;TEXTURE;shulk;Shulk]" ..
 	"image_button[2,2;1,1;TEXTURE;feline;Feline]" ..
-	"image_button[2,2;1,1;TEXTURE;player;Player]"
+	"image_button[1,3;1,1;TEXTURE;player;Player]"
 
 local storage = minetest.get_mod_storage()
 if storage:contains("origins") then
