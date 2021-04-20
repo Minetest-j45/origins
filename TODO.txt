@@ -2,7 +2,7 @@ enderian
 merling
 phantom
 elytrian
-blazeborn
+blazeborn(no fire dmg is done)
 avian
 arachnid
 shulk
