@@ -1,3 +1,0 @@
-mcl_player
-playerphysics
-mcl_throwing
