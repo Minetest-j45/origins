@@ -126,13 +126,14 @@ minetest.register_on_leaveplayer(function(player)
 end)
 
 local function spawn_pearl(player)
-	if enderian_cooldown[player:get_player_name()] then
-		minetest.chat_send_player(player:get_player_name(), "Please wait for your 3 second cooldown to end")
+	local pname = player:get_player_name()
+	if enderian_cooldown[pname] then
+		minetest.chat_send_player(pname, "Please wait for your 3 second cooldown to end")
 		return
 	end
-	enderian_cooldown[player:get_player_name()] = true
+	enderian_cooldown[pname] = true
 	minetest.after(3, function()
-		enderian_cooldown[player:get_player_name()] = false
+		enderian_cooldown[pname] = false
 	end)
 	local pos = player:get_pos()
       	local dir = player:get_look_dir()
@@ -141,6 +142,7 @@ local function spawn_pearl(player)
 		minetest.sound_play("mcl_throwing_throw", {pos=pos, gain=0.4, max_hear_distance=16}, true)
       		obj:set_velocity(vector.multiply(dir, 22))
       		obj:set_acceleration({x=dir.x*-3, y=-GRAVITY, z=dir.z*-3})
+		obj:get_luaentity()._thrower = pname
 	end
 end
 
