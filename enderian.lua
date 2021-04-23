@@ -138,6 +138,7 @@ local function spawn_pearl(player)
       	local dir = player:get_look_dir()
       	local obj = minetest.add_entity(pos, "origins:ender_pearl_entity")
 	if obj then
+		minetest.sound_play("mcl_throwing_throw", {pos=pos, gain=0.4, max_hear_distance=16}, true)
       		obj:set_velocity(vector.multiply(dir, 22))
       		obj:set_acceleration({x=dir.x*-3, y=-GRAVITY, z=dir.z*-3})
 	end
