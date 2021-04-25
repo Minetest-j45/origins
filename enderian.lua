@@ -181,7 +181,7 @@ minetest.register_globalstep(function(dtime)
         local pname = player:get_player_name()
         local team = origins.get_player_team(pname)
         if not team == "enderian" then return end
-        local inv = plaeyr:get_inventory()
+        local inv = player:get_inventory()
         local main = inv:get_list("main")
         for i, stack in ipairs(main) do
           stack = ItemStack("origins:ranged_hand 1")
