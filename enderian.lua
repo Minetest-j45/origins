@@ -184,8 +184,10 @@ minetest.register_globalstep(function(dtime)
         local inv = player:get_inventory()
         local main = inv:get_list("main")
         for i, stack in ipairs(main) do
-          stack = ItemStack("origins:ranged_hand 1")
-          main[i] = stack
+	  if main[i]:get_size() == 0 then
+          	stack = ItemStack("origins:ranged_hand 1")
+          	main[i] = stack
+	  end
         end
         inv:set_list("main", main)
     end
