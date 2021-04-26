@@ -128,7 +128,6 @@ end)
 local function spawn_pearl(player)
 	local pname = player:get_player_name()
 	if enderian_cooldown[pname] then
-		minetest.chat_send_player(pname, "Please wait for your 3 second cooldown to end")
 		return
 	end
 	enderian_cooldown[pname] = true
