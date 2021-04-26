@@ -160,36 +160,30 @@ minetest.register_globalstep(function(dtime)
 end)
 
 minetest.register_item("origins:ranged_hand", {
-    type = "none",
-    wield_scale = {x=1,y=1,z=2.5},
-    wield_image = "wieldhand.png",
-    range = 5.5,
-    tool_capabilities = {
-        full_punch_interval = 0.9,
-        max_drop_level = 0,
-        groupcaps = {
-            crumbly = {times={[2]=3.00, [3]=0.70}, uses=0, maxlevel=1},
-            snappy = {times={[3]=0.40}, uses=0, maxlevel=1},
-            oddly_breakable_by_hand = {times={[1]=3.50,[2]=2.00,[3]=0.70}, uses=0}
-        },
-        damage_groups = {fleshy=1},
-    }
+	type = "none",
+	wield_scale = {x=1,y=1,z=2.5},
+	wield_image = "wieldhand.png",
+	range = 5.5,
+	tool_capabilities = {
+		full_punch_interval = 0.9,
+		max_drop_level = 0,
+		groupcaps = {
+			crumbly = {times={[2]=3.00, [3]=0.70}, uses=0, maxlevel=1},
+			snappy = {times={[3]=0.40}, uses=0, maxlevel=1},
+			oddly_breakable_by_hand = {times={[1]=3.50,[2]=2.00,[3]=0.70}, uses=0}
+		},
+		damage_groups = {fleshy=1},
+	}
 })
 
 minetest.register_globalstep(function(dtime)
-    for _,player in pairs(minetest.get_connected_players()) do
-        local pname = player:get_player_name()
-        local team = origins.get_player_team(pname)
-        if not team == "enderian" then return end
-        local inv = player:get_inventory()
-        local main = inv:get_list("main")
-        for i, stack in ipairs(main) do
-	  if main[i]:get_size() == 0 then
-          	stack = ItemStack("origins:ranged_hand 1")
-          	main[i] = stack
-	  end
-        end
-        inv:set_list("main", main)
-    end
+	for _,player in pairs(minetest.get_connected_players()) do
+		local pname = player:get_player_name()
+		local team = origins.get_player_team(pname)
+		if not team == "enderian" then return end
+		local inv = player:get_inventory()
+		inv:set_size("hand", 1)
+		inv:set_list("hand", {ItemStack("origins:ranged_hand")})
+	end
 end)
 
