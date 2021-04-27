@@ -1,4 +1,4 @@
-enderian
+enderian(pearls is done, water dmg is done)
 merling
 phantom
 elytrian(elytra effect is done)
