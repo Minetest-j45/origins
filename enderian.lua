@@ -168,7 +168,7 @@ minetest.register_globalstep(function(dtime)
 			local team = origins.get_player_team(pname)
 			if team ~= "enderian" then return end
 			if minetest.get_item_group(mcl_playerinfo[pname].node_head, "water") ~= 0 or minetest.get_item_group(mcl_playerinfo[pname].node_feet, "water") > 0 then
-				player:set_hp(player:get_hp()-math.random(0.5, 1), { type = "allergies", from = "mod" })
+				player:set_hp(player:get_hp()-math.random(0.5, 1), {type = "set_hp", from = "mod", allergies = "tru"})
 			end
 		end
 		water_timer = 0
@@ -178,7 +178,7 @@ end)
 minetest.register_on_player_hpchange(function(player, hp_change, reason)
 	local name = player:get_player_name()
 	if name and hp_change < 0 then
-		if reason.type == "allergies" then
+		if reason.allergies == "tru" then
 			for i=1, 6 do
 				local stack = player:get_inventory():get_stack("armor", i)
 				if stack:get_count() > 0 then
