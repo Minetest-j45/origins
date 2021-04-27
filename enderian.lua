@@ -167,8 +167,7 @@ minetest.register_globalstep(function(dtime)
 			local pname = player:get_player_name()
 			local team = origins.get_player_team(pname)
 			if team ~= "enderian" then return end
-			if minetest.get_item_group(mcl_playerinfo[pname].node_head, "water") ~= 0 --[[or minetest.get_item_group(mcl_playerinfo[pname].node_feet, "water") > 0 --]]then
-				minetest.chat_send_all("yaya")
+			if minetest.get_item_group(mcl_playerinfo[pname].node_head, "water") ~= 0 or minetest.get_item_group(mcl_playerinfo[pname].node_feet, "water") > 0 then
 				player:set_hp(player:get_hp()-math.random(0.5, 1), { type = "allergies", from = "mod" })
 			end
 		end
