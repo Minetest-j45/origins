@@ -167,7 +167,7 @@ minetest.register_globalstep(function(dtime)
 			local pname = player:get_player_name()
 			local team = origins.get_player_team(pname)
 			if team ~= "enderian" then return end
-			local headpos = vector.add(player:get_pos(), {x = 0, y = 1.625, z = 0})
+			local headpos = vector.add(player:get_pos(), {x = 0, y = 1, z = 0})
 			local legpos = player:get_pos()
 			minetest.chat_send_all(minetest.get_node(legpos))
 			if minetest.get_item_group(minetest.get_node(headpos), "water") ~= 0 or minetest.get_item_group(minetest.get_node(legpos), "water") ~= 0 then
