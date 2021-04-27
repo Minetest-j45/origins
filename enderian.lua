@@ -173,3 +173,21 @@ minetest.register_globalstep(function(dtime)
         end
     end
 end)
+
+minetest.register_on_player_hpchange(function(player, hp_change, reason)
+	local name = player:get_player_name()
+	if name and hp_change < 0 then
+		if type.allergies then
+			for i=1, 6 do
+				local stack = player:get_inventory():get_stack("armor", i)
+				if stack:get_count() > 0 then
+					local enchantments = mcl_enchanting.get_enchantments(stack)
+					if enchantments.water_protection then
+						hp_change = 0
+					end
+				end
+			end
+		end
+	end
+	return hp_change
+end, true)
