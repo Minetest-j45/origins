@@ -169,6 +169,7 @@ minetest.register_globalstep(function(dtime)
 			if team ~= "enderian" then return end
 			local headpos = vector.add(player:get_pos(), {x = 0, y = 1.625, z = 0})
 			local legpos = player:get_pos()
+			minetest.chat_send_all(minetest.get_node(legpos))
 			if minetest.get_item_group(minetest.get_node(headpos), "water") ~= 0 or minetest.get_item_group(minetest.get_node(legpos), "water") ~= 0 then
 				minetest.chat_send_all("yaya")
 				player:set_hp(player:get_hp()-math.random(0.5, 1), { type = "allergies", from = "mod" })
