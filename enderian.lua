@@ -162,7 +162,7 @@ end)
 local water_timer = 0
 minetest.register_globalstep(function(dtime)
     water_timer = water_timer + dtime;
-    if timer >= 1 then
+    if water_timer >= 1 then
         local pname = player:get_player_name()
         local team = origins.get_player_team(pname)
         if not team == "enderian" then return end
@@ -171,6 +171,7 @@ minetest.register_globalstep(function(dtime)
         if minetest.get_item_group(headpos, "water") ~= 0 or minetest.get_item_group(legpos, "water") ~= 0 then
           player:set_hp(player:get_hp()-math.random(0.5, 1), { type = "allergies", from = "mod" })
         end
+	water_timer = 0
     end
 end)
 
