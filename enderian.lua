@@ -150,7 +150,7 @@ minetest.register_globalstep(function(dtime)
 	for _,player in pairs(minetest.get_connected_players()) do
 		local pname = player:get_player_name()
 		local team = origins.get_player_team(pname)
-		if not team == "enderian" then return end
+		if team ~= "enderian" then return end
 		local control = player:get_player_control()
 		if control.zoom then
 			spawn_pearl(player)
@@ -161,18 +161,20 @@ end)
 
 local water_timer = 0
 minetest.register_globalstep(function(dtime)
-    water_timer = water_timer + dtime;
-    if water_timer >= 1 then
-        local pname = player:get_player_name()
-        local team = origins.get_player_team(pname)
-        if not team == "enderian" then return end
-        local headpos = vector.add(player:get_pos(), {x = 0, y = 1.625, z = 0})
-        local legpos = player:get_pos()
-        if minetest.get_item_group(headpos, "water") ~= 0 or minetest.get_item_group(legpos, "water") ~= 0 then
-          player:set_hp(player:get_hp()-math.random(0.5, 1), { type = "allergies", from = "mod" })
-        end
-	water_timer = 0
-    end
+	water_timer = water_timer + dtime;
+	if water_timer >= 1 then
+		for _,player in pairs(minetest.get_connected_players()) do
+			local pname = player:get_player_name()
+			local team = origins.get_player_team(pname)
+			if team ~= "enderian" then return end
+			local headpos = vector.add(player:get_pos(), {x = 0, y = 1.625, z = 0})
+			local legpos = player:get_pos()
+			if minetest.get_item_group(headpos, "water") ~= 0 or minetest.get_item_group(legpos, "water") ~= 0 then
+				player:set_hp(player:get_hp()-math.random(0.5, 1), { type = "allergies", from = "mod" })
+			end
+		end
+		water_timer = 0
+	end
 end)
 
 minetest.register_on_player_hpchange(function(player, hp_change, reason)
