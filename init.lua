@@ -57,8 +57,10 @@ end
 
 origins.set = function(pname, wanted, fancy)
 	local current = origins.get_player_team(pname)
-	local tablenumber = tablefind(origins.origin[current], pname)
-	table.remove(origins.origin[current], tonumber(tablenumber))
+	if current then
+		local tablenumber = tablefind(origins.origin[current], pname)
+		table.remove(origins.origin[current], tonumber(tablenumber))
+	end
 	table.insert(origins.origin[wanted], pname)
 	minetest.chat_send_all(pname .. " is now " .. fancy)
 	local player = minetest.get_player_by_name(pname)
@@ -113,7 +115,7 @@ end)
 
 minetest.register_on_newplayer(function(player)
 	player:get_inventory():add_item("main", ItemStack("origins:orb"))
-	table.insert(origins.origin.player, player:get_player_name())
+	origins.set(pname, "player", "a player")
 end)
 
 minetest.register_on_shutdown(function()
