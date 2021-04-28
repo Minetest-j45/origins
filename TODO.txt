@@ -2,7 +2,7 @@ enderian(pearls is done, water dmg is done)
 merling
 phantom
 elytrian(elytra effect is done)
-blazeborn(no fire dmg is done)
+blazeborn(no fire dmg is done, water dmg is done)
 avian
 arachnid
 shulk
