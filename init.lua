@@ -55,6 +55,24 @@ local function tablefind(tab,el)
 	end
 end
 
+origins.set = function(pname, wanted, fancy)
+	local current = origins.get_player_team(pname)
+	local tablenumber = tablefind(origins.origin[current], pname)
+	table.remove(origins.origin[current], tonumber(tablenumber))
+	table.insert(origins.origin[wanted], pname)
+	minetest.chat_send_all(pname .. " is now " .. fancy)
+	local player = minetest.get_player_by_name(pname)
+	local properties = player:get_properties()
+	if wanted == "phantom"  or wanted == "arachnid" then
+		properties.hp_max = 17
+	elseif wanted == "feline" then
+		properties.hp_max = 19
+	else
+		properties.hp_max = 20
+	end
+	player:set_properties(properties)
+end
+
 minetest.register_craftitem("origins:orb", {
 	description = "Origins Orb",
 	inventory_image = "orb.png",
