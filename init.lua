@@ -115,7 +115,7 @@ end)
 
 minetest.register_on_newplayer(function(player)
 	player:get_inventory():add_item("main", ItemStack("origins:orb"))
-	origins.set(pname, "player", "a player")
+	origins.set(player:get_player_name(), "player", "a player")
 end)
 
 minetest.register_on_shutdown(function()
