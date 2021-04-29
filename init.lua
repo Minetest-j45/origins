@@ -55,6 +55,16 @@ local function tablefind(tab,el)
 	end
 end
 
+local function set_max_hp(player, max_hp)
+    local prop = player:get_properties()
+    local cur_hp = player:get_hp()
+    local old_max = prop.hp_max
+    local new_hp = cur_hp/old_max * max_hp
+    prop.hp_max = max_hp
+    player:set_hp(new_hp)
+    player:set_properties(prop)
+end
+
 origins.set = function(pname, wanted, fancy)
 	local current = origins.get_player_team(pname)
 	if current then
@@ -64,15 +74,13 @@ origins.set = function(pname, wanted, fancy)
 	table.insert(origins.origin[wanted], pname)
 	minetest.chat_send_all(pname .. " is now " .. fancy)
 	local player = minetest.get_player_by_name(pname)
-	local properties = player:get_properties()
 	if wanted == "phantom"  or wanted == "arachnid" then
-		properties.hp_max = 17
+		set_max_hp(player, 17)
 	elseif wanted == "feline" then
-		properties.hp_max = 19
+		set_max_hp(player, 19)
 	else
-		properties.hp_max = 20
+		set_max_hp(player, 20)
 	end
-	player:set_properties(properties)
 end
 
 minetest.register_craftitem("origins:orb", {
