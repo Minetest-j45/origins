@@ -75,9 +75,9 @@ origins.set = function(pname, wanted, fancy)
 	minetest.chat_send_all(pname .. " is now " .. fancy)
 	local player = minetest.get_player_by_name(pname)
 	if wanted == "phantom"  or wanted == "arachnid" then
-		set_max_hp(player, 17)
+		set_max_hp(player, 14)
 	elseif wanted == "feline" then
-		set_max_hp(player, 19)
+		set_max_hp(player, 18)
 	else
 		set_max_hp(player, 20)
 	end
