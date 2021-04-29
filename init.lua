@@ -55,16 +55,6 @@ local function tablefind(tab,el)
 	end
 end
 
-local function set_max_hp(player, max_hp)
-    local prop = player:get_properties()
-    local cur_hp = player:get_hp()
-    local old_max = prop.hp_max
-    local new_hp = cur_hp/old_max * max_hp
-    prop.hp_max = max_hp
-    player:set_hp(new_hp)
-    player:set_properties(prop)
-end
-
 origins.set = function(pname, wanted, fancy)
 	local current = origins.get_player_team(pname)
 	if current then
@@ -76,10 +66,13 @@ origins.set = function(pname, wanted, fancy)
 	local player = minetest.get_player_by_name(pname)
 	if wanted == "phantom"  or wanted == "arachnid" then
 		set_max_hp(player, 14)
+		player:set_properties(hp_max = 14)
 	elseif wanted == "feline" then
 		set_max_hp(player, 18)
+		player:set_properties(hp_max = 18)
 	else
 		set_max_hp(player, 20)
+		player:set_properties(hp_max = 20)
 	end
 end
 
