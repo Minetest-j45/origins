@@ -64,14 +64,14 @@ origins.set = function(pname, wanted, fancy)
 	table.insert(origins.origin[wanted], pname)
 	minetest.chat_send_all(pname .. " is now " .. fancy)
 	local player = minetest.get_player_by_name(pname)
-	local props = player:get_properties()
+	--[[local props = player:get_properties()
 	if wanted == "phantom"  or wanted == "arachnid" then
 		player:set_properties(props.hp_max = 14)
 	elseif wanted == "feline" then
 		player:set_properties(props.hp_max = 18)
 	else
 		player:set_properties(props.hp_max = 20)
-	end
+	end--]]
 end
 
 minetest.register_craftitem("origins:orb", {
